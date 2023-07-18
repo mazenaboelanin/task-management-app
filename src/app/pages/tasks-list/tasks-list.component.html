@@ -1,5 +1,13 @@
 <h2 class="text-center p-4">Tasks list</h2>
 
 <div class="container">
+  <div class="text-center mb-4">
+    <button
+      [routerLink]="['/add-task']"
+      type="button"
+      class="btn btn-success mb-4">Add New Task</button>
+    <hr class="divider">
+  </div>
+
   <app-task-card [tasks] = "tasks"></app-task-card>
 </div>
