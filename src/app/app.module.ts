@@ -7,6 +7,7 @@ import { TasksListComponent } from './pages/tasks-list/tasks-list.component';
 import { TaskDetailsComponent } from './pages/task-details/task-details.component';
 import { AddTaskComponent } from './pages/add-task/add-task.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TaskCardComponent } from './components/task-card/task-card.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
