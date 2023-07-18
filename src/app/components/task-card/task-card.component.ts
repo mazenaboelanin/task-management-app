@@ -7,10 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskCardComponent implements OnInit {
   @Input() tasks: any;
+  selectedTasks = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  taskSelected(checked: boolean, task: any){
+    if(checked) {
+      this.selectedTasks.push(task);
+    } else {
+      this.selectedTasks = this.selectedTasks.filter(selectedTask => selectedTask.id !== task.id);
+    }
+  }
 }

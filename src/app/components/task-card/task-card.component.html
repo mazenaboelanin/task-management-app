@@ -8,6 +8,16 @@
       }">
 
       <div class="card-body">
+        <div class="form-check float-end">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            [(ngModel)]="task.checked"
+            (ngModelChange)="taskSelected($event, task)">
+          <label class="form-check-label" for="flexCheckDefault">
+            Select Task
+          </label>
+        </div>
         <div class="clearfix" style="float:none;"></div>
         <h5 class="card-title">
           <label for="">{{ task?.title }}</label>
