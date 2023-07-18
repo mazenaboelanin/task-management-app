@@ -1,0 +1,23 @@
+.todo {
+  border-left: 5px solid red;
+  .state {
+    color: red;
+    font-size: 0.8rem;
+  }
+}
+
+.inprogress {
+  border-left: 5px solid orange;
+  .state {
+    color: orange;
+    font-size: 0.8rem;
+  }
+}
+
+.done {
+  border-left: 5px solid green;
+  .state {
+    color: green;
+    font-size: 0.8rem;
+  }
+}

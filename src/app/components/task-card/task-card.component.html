@@ -1,10 +1,17 @@
 <div class="row">
   <div class="col-6 offset-3">
-    <div class="card mb-4" *ngFor="let task of tasks">
+    <div class="card mb-4" *ngFor="let task of tasks"
+      [ngClass]="{
+        'todo': task.state === 'todo',
+        'inprogress': task.state === 'inprogress',
+        'done': task.state === 'done'
+      }">
+
       <div class="card-body">
+        <div class="clearfix" style="float:none;"></div>
         <h5 class="card-title">
           <label for="">{{ task?.title }}</label>
-          <label class="float-end"> {{ task?.state }} </label>
+          <label class="float-end state">( {{ task?.state }} ) </label>
         </h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">Priority: {{ task?.priority }}</h6>
         <div class="card-text">
