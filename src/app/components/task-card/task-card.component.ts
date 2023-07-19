@@ -38,4 +38,19 @@ export class TaskCardComponent implements OnInit {
     );
   }
 
+  updateTaskState(){
+    if(this.task?.state === 'inprogress'){
+      this.task.state = 'done'
+    } else {
+      this.task.state = 'inprogress'
+    }
+    this.taskService.updateTask(this.task).subscribe(
+      (response) => {
+        console.log('updated Successfully: ', response)
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
+  }
 }
