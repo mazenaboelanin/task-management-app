@@ -8,6 +8,7 @@ import { TaskService } from 'src/app/services/task/task.service';
 })
 export class TasksListComponent implements OnInit {
   tasks: any = [];
+  selectedTasks = [];
 
   constructor(
     private taskService: TaskService
@@ -30,6 +31,15 @@ export class TasksListComponent implements OnInit {
 
   deleteTask(deletedTask){
     this.tasks = this.tasks.filter(task => task.id !== deletedTask.id);
+  }
+
+  tasksSelected(task){
+    if(task?.checked) {
+      this.selectedTasks.push(task);
+    } else {
+      this.selectedTasks = this.selectedTasks.filter(selectedTask => selectedTask.id !== task.id);
+    }
+    console.log('*** seletedTasks: ', this.selectedTasks);
   }
 
 }

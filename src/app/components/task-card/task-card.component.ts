@@ -9,6 +9,7 @@ import { TaskService } from 'src/app/services/task/task.service';
 export class TaskCardComponent implements OnInit {
   @Input() task: any;
   @Output() onDeleteTaskEvent: EventEmitter <any> = new EventEmitter();
+  @Output() onSelectTaskEvent: EventEmitter <any> = new EventEmitter();
   selectedTasks = [];
 
   constructor(
@@ -18,12 +19,8 @@ export class TaskCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  taskSelected(checked: boolean, task: any){
-    if(checked) {
-      this.selectedTasks.push(task);
-    } else {
-      this.selectedTasks = this.selectedTasks.filter(selectedTask => selectedTask.id !== task.id);
-    }
+  taskSelected(checked: boolean){
+    this.onSelectTaskEvent.emit(this.task);
   }
 
   deleteTask(){
