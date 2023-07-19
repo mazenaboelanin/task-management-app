@@ -42,4 +42,44 @@ export class TasksListComponent implements OnInit {
     console.log('*** seletedTasks: ', this.selectedTasks);
   }
 
+  doneSelectedTasks(){
+    this.selectedTasks.forEach(selectedTask => {
+      // avoid useless api update request
+      if(selectedTask.state === 'done') {
+        // clear checkbox and remove from selected task
+        selectedTask.checked = false;
+        this.selectedTasks = this.selectedTasks.filter(task => task.id !== selectedTask.id);
+        return;
+      }
+      delete selectedTask['checked'];
+      selectedTask.state ='done'
+      // ofcourse we could send tasks as array of object if we handled this from backend
+      this.taskService.updateTask(selectedTask).subscribe(
+        (response) => {
+          // removing only the success updated task
+          this.selectedTasks = this.selectedTasks.filter(task => task.id !== selectedTask.id);
+        },
+        (error) => {
+          console.log(error)
+        }
+      );
+    });
+  }
+
+  deleteSelectedTasks(){
+    this.selectedTasks.forEach(selectedTask => {
+      this.taskService.deleteTask(selectedTask.id).subscribe(
+        (response) => {
+          // delete task from ui
+          this.deleteTask(selectedTask);
+          // delete task from selectedTasks
+          this.selectedTasks = this.selectedTasks.filter(task => task.id !== selectedTask.id);
+        },
+        (error) => {
+          console.log(error)
+        }
+      );
+    });
+  }
+
 }

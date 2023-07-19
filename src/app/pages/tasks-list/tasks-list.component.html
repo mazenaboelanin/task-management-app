@@ -5,7 +5,23 @@
     <button
       [routerLink]="['/add-task']"
       type="button"
-      class="btn btn-success mb-4">Add New Task</button>
+      class="btn btn-primary mb-4 me-2">
+      Add New Task
+    </button>
+      <button
+        (click)="doneSelectedTasks()"
+        [disabled]="!selectedTasks.length"
+        type="button"
+        class="btn btn-success mb-4 me-2">
+        Done Selected Tasks
+    </button>
+      <button
+        (click)="deleteSelectedTasks()"
+        [disabled]="!selectedTasks.length"
+        type="button"
+        class="btn btn-danger mb-4">
+        Delete Selected Tasks
+    </button>
     <hr class="divider">
   </div>
 
