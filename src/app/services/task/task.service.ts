@@ -16,4 +16,7 @@ export class TaskService {
     return this.http.get(`${this.baseUrl}/tasks`);
   }
 
+  deleteTask(taskId: any): Observable<any>{
+    return this.http.delete(`${this.baseUrl}/tasks/${taskId}`);
+  }
 }

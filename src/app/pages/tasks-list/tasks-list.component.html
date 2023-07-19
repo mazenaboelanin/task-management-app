@@ -11,6 +11,7 @@
 
   <app-task-card
     *ngFor="let task of tasks"
-    [task] = "task">
+    [task] = "task"
+    (onDeleteTaskEvent)="deleteTask(task)">
   </app-task-card>
 </div>

@@ -28,4 +28,8 @@ export class TasksListComponent implements OnInit {
     );
   }
 
+  deleteTask(deletedTask){
+    this.tasks = this.tasks.filter(task => task.id !== deletedTask.id);
+  }
+
 }
