@@ -7,7 +7,7 @@ import { TasksListComponent } from './pages/tasks-list/tasks-list.component';
 import { TaskDetailsComponent } from './pages/task-details/task-details.component';
 import { AddTaskComponent } from './pages/add-task/add-task.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
