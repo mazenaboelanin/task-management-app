@@ -12,4 +12,8 @@ export class TaskService {
     private http: HttpClient
   ) { }
 
+  getTasks(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/tasks`);
+  }
+
 }

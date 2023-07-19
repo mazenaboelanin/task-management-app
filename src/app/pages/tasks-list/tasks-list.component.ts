@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-tasks-list',
@@ -8,35 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class TasksListComponent implements OnInit {
   tasks: any = [];
 
-  constructor() { }
+  constructor(
+    private taskService: TaskService
+  ) { }
 
   ngOnInit(): void {
-    this.tasks = [
-      {
-        id:1,
-        title: 'task1',
-        priority: 1,
-        date: new Date().toLocaleString(),
-        state: 'inprogress',
-        description: 'descipriton of task1'
+    this.initializeTasks();
+  }
+
+  initializeTasks(){
+    this.taskService.getTasks().subscribe(
+      (response) => {
+        this.tasks = response
       },
-      {
-        id:2,
-        title: 'task2',
-        priority: 2,
-        date: new Date().toLocaleString(),
-        state: 'Todo',
-        description: 'descipriton of task2'
-      },
-      {
-        id:3,
-        title: 'task3',
-        priority: 3,
-        date: new Date().toLocaleString(),
-        state: 'Todo',
-        description: 'descipriton of task3'
+      (error)=>{
+        console.log(error);
       }
-    ];
+    );
   }
 
 }
