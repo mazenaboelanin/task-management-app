@@ -29,6 +29,9 @@ export class AddTaskComponent implements OnInit {
       }),
       state: new FormControl('todo', {
         validators: [Validators.required]
+      }),
+      date: new FormControl(null, {
+        validators: [Validators.required]
       })
     });
   }
@@ -40,12 +43,16 @@ export class AddTaskComponent implements OnInit {
       return;
     }
 
+    let deliveryDate = this.taskForm?.value.date;
+    deliveryDate = new Date(deliveryDate.year, deliveryDate.month, deliveryDate.day).toDateString();
+
     const task = {
       id: uuidv4(),
       title: this.taskForm?.value.title,
       description: this.taskForm?.value.description,
-      priority: this.taskForm?.value.priority,
-      state: this.taskForm?.value.state
+      priority: parseInt(this.taskForm?.value.priority),
+      state: this.taskForm?.value.state,
+      date: deliveryDate
     }
     console.log(task);
 
@@ -56,6 +63,7 @@ export class AddTaskComponent implements OnInit {
         this.taskForm.controls['title'].reset();
         this.taskForm.controls['description'].reset();
         this.taskForm.controls['state'].setValue('todo')
+        this.taskForm.controls['date'].reset();
       },
       (error) => {
         console.log('error:', error);
