@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class AddTaskComponent implements OnInit {
   taskForm: FormGroup;
-  isFormSubmitted;
+  isFormSubmitted: boolean;
 
   constructor() { }
 
@@ -44,6 +44,19 @@ export class AddTaskComponent implements OnInit {
       priority: this.taskForm?.value.priority,
       state: this.taskForm?.value.state
     }
+    console.log(task);
+
+    this.isFormSubmitted = false;
+    this.taskForm.controls['title'].reset();
+    this.taskForm.controls['description'].reset();
+    this.taskForm.controls['state'].setValue('todo')
+
+  }
+
+  clearFormData(){
+    console.log('form:', this.taskForm.value);
+    this.taskForm.reset();
+    console.log('form:', this.taskForm.value);
   }
 
 }
