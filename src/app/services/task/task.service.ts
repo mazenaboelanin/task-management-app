@@ -13,8 +13,9 @@ export class TaskService {
   ) { }
 
   getTasks(): Observable<any>{
-    return this.http.get(`${this.baseUrl}/tasks`);
+    return this.http.get(`${this.baseUrl}/tasks?_sort=state,priority&_order=desc`);
   }
+
 
   deleteTask(taskId: any): Observable<any>{
     return this.http.delete(`${this.baseUrl}/tasks/${taskId}`);

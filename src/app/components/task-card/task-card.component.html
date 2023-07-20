@@ -25,7 +25,9 @@
           <label for="">{{ task?.title }}</label>
           <label class="float-end state">( {{ task?.state }} ) </label>
         </h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Priority: {{ task?.priority }}</h6>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Priority:
+          {{ task?.priority == 1 ? 'High' : 'Low' }}
+        </h6>
         <div class="card-text">
           <p>{{ task?.description }}</p>
           <hr>
