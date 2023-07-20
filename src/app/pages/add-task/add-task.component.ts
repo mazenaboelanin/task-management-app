@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TaskService } from 'src/app/services/task/task.service';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -11,7 +12,9 @@ export class AddTaskComponent implements OnInit {
   taskForm: FormGroup;
   isFormSubmitted: boolean;
 
-  constructor() { }
+  constructor(
+    private taskService: TaskService
+  ) { }
 
   ngOnInit(): void {
     this.taskForm = new FormGroup({
@@ -46,11 +49,18 @@ export class AddTaskComponent implements OnInit {
     }
     console.log(task);
 
-    this.isFormSubmitted = false;
-    this.taskForm.controls['title'].reset();
-    this.taskForm.controls['description'].reset();
-    this.taskForm.controls['state'].setValue('todo')
-
+    this.taskService.createTask(task).subscribe(
+      (response) => {
+        console.log('Created Successfully:', response);
+        this.isFormSubmitted = false;
+        this.taskForm.controls['title'].reset();
+        this.taskForm.controls['description'].reset();
+        this.taskForm.controls['state'].setValue('todo')
+      },
+      (error) => {
+        console.log('error:', error);
+      }
+    );
   }
 
   clearFormData(){
