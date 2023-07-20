@@ -1,7 +1,7 @@
 {
-  "tasks":[
+  "tasks": [
     {
-      "id":1,
+      "id": "1",
       "title": "task1",
       "priority": 1,
       "date": "May 5th, 2:30",
@@ -10,7 +10,7 @@
       "groupId": 1
     },
     {
-      "id":2,
+      "id": "2",
       "title": "task2",
       "priority": 2,
       "date": "june 5th, 2:30",
@@ -19,23 +19,29 @@
       "groupId": 1
     },
     {
-      "id":3,
+      "id": "3",
       "title": "task3",
       "priority": 3,
       "date": "june 7th, 2:30",
       "state": "todo",
       "description": "descipriton of task3",
       "groupId": 2
-    }
-  ],
-  "taskGroups": [
-    {
-      "id": 1,
-      "name": "Study"
     },
     {
-      "id": 2,
-      "name": "Sport"
+      "id": "75ac42b7-1b03-4e4a-b2d2-803cf00392f7",
+      "title": "date picker",
+      "description": "date picker description",
+      "priority": 1,
+      "state": "done",
+      "date": "Mon Aug 21 2023"
+    },
+    {
+      "id": "7b2091d2-5e0b-4d66-849f-9ea3c257c46b",
+      "title": "fasdfas",
+      "description": "fdsafads",
+      "priority": 1,
+      "state": "todo",
+      "date": "Wed Aug 30 2023"
     }
   ]
 }
