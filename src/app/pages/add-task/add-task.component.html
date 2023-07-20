@@ -1,1 +1,61 @@
-<p>add-task works!</p>
+<h2 class="text-center p-4">Add Task</h2>
+
+<div class="container">
+
+  <button type="button" class="btn btn-primary mb-3" [routerLink]="['']">Back</button>
+
+  <form [formGroup]="taskForm">
+
+    <div class="title-section mb-3">
+      <label class="form-label">
+        Title <label class="required-symbol">*</label>
+      </label>
+      <input
+        id="title" formControlName="title" type="text" class="form-control" placeholder="Task Title">
+    </div>
+
+    <div class="description-section mb-3">
+      <label class="form-label">
+        Description <label class="required-symbol">*</label>
+      </label>
+      <textarea
+        formControlName="description" class="form-control" rows="3" placeholder="Task Description"></textarea>
+
+    </div>
+
+    <div class="priority-section mb-3">
+      <label  class="form-label">
+        Priority <label class="required-symbol">*</label>
+      </label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" value="1" formControlName="priority" class="form-check-input">
+          High Priority
+        </label>
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" value="2" formControlName="priority" class="form-check-input">
+          Low Priority
+        </label>
+      </div>
+    </div>
+
+    <div class="state-section mb-3">
+      <label  class="form-label">
+        State <label class="required-symbol">*</label>
+      </label>
+      <select formControlName="state" class="form-select">
+        <option value="todo">Todo</option>
+        <option value="inprogress">Inprogress</option>
+        <option value="done">Done</option>
+      </select>
+    </div>
+
+    <button
+      class="btn btn-success mb-3"
+      (click)="submitTask()">Add Task</button>
+  </form>
+</div>
+
