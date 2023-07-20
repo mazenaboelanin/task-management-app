@@ -5,7 +5,7 @@ By `Mazen Abo Elanin`
 
 The Project allows you to:
   - Create and Manage your `Tasks` in a good way
-  - Change the `state` of the task once you `started` or `finished` it.
+  - Change the `state` of the task once you `Start` or `Finish` it.
 
 ## Development server
 
