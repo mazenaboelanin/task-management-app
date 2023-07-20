@@ -39,7 +39,6 @@ export class TasksListComponent implements OnInit {
     } else {
       this.selectedTasks = this.selectedTasks.filter(selectedTask => selectedTask.id !== task.id);
     }
-    console.log('*** seletedTasks: ', this.selectedTasks);
   }
 
   doneSelectedTasks(){

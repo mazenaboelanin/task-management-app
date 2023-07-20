@@ -58,7 +58,6 @@ export class AddTaskComponent implements OnInit {
       state: this.taskForm?.value.state,
       date: deliveryDate
     }
-    console.log(task);
 
     this.taskService.createTask(task).subscribe(
       (response) => {
@@ -77,9 +76,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   clearFormData(){
-    console.log('form:', this.taskForm.value);
     this.taskForm.reset();
-    console.log('form:', this.taskForm.value);
   }
 
   closeSuccessAlert(){

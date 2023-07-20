@@ -26,7 +26,6 @@ export class TaskCardComponent implements OnInit {
   }
 
   deleteTask(){
-    console.log(this.task);
     this.taskService.deleteTask(this.task?.id).subscribe(
       (response) => {
         this.onDeleteTaskEvent.emit(this.task);
@@ -44,9 +43,7 @@ export class TaskCardComponent implements OnInit {
       this.task.state = 'inprogress'
     }
     this.taskService.updateTask(this.task).subscribe(
-      (response) => {
-        console.log('updated Successfully: ', response)
-      },
+      (response) => {},
       (error) => {
         console.log(error)
       }
