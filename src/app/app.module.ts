@@ -10,6 +10,8 @@ import { TaskCardComponent } from './components/task-card/task-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './components/error/error.component';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ErrorComponent } from './components/error/error.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
