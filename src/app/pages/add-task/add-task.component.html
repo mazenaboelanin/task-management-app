@@ -11,20 +11,16 @@
         Title <label class="required-symbol">*</label>
       </label>
       <input
-        [ngClass]="{'required':(isFormSubmitted && taskForm.get('title').invalid) ||
+        [ngClass]="{'required': (isFormSubmitted && taskForm.get('title').invalid) ||
         (taskForm.get('title').invalid && taskForm.get('title').errors) &&
         (taskForm.get('title').dirty || taskForm.get('title').touched)}"
         id="title" formControlName="title" type="text" class="form-control" placeholder="Task Title">
-        <div class="errors"
-        *ngIf="(isFormSubmitted && taskForm.get('title').invalid) ||
-              (taskForm.get('title').invalid && taskForm.get('title').errors) &&
-              (taskForm.get('title').dirty || taskForm.get('title').touched)">
-        <small
-          class="text-danger"
-          *ngIf="taskForm.get('title').hasError('required')">
-          Title is required.
-        </small>
-      </div>
+
+        <app-error
+          [taskForm]="taskForm"
+          formField="title"
+          [isFormSubmitted]="isFormSubmitted">
+        </app-error>
     </div>
 
     <div class="description-section mb-3">
@@ -32,21 +28,16 @@
         Description <label class="required-symbol">*</label>
       </label>
       <textarea
-        [ngClass]="{'required':(isFormSubmitted && taskForm.get('description').invalid) ||
+        [ngClass]="{'required': (isFormSubmitted && taskForm.get('description').invalid) ||
         (taskForm.get('description').invalid && taskForm.get('description').errors) &&
         (taskForm.get('description').dirty || taskForm.get('description').touched)}"
         formControlName="description" class="form-control" rows="3" placeholder="Task Description"></textarea>
 
-      <div class="errors"
-        *ngIf="(isFormSubmitted && taskForm.get('description').invalid) ||
-              (taskForm.get('description').invalid && taskForm.get('description').errors) &&
-              (taskForm.get('description').dirty || taskForm.get('description').touched)">
-        <small
-          class="text-danger"
-          *ngIf="taskForm.get('description').hasError('required')">
-          Description is required.
-        </small>
-      </div>
+        <app-error
+          [taskForm]="taskForm"
+          formField="description"
+          [isFormSubmitted]="isFormSubmitted">
+        </app-error>
     </div>
 
     <div class="priority-section mb-3">
@@ -66,17 +57,33 @@
           Low Priority
         </label>
       </div>
+
+      <app-error
+        [taskForm]="taskForm"
+        formField="priority"
+        [isFormSubmitted]="isFormSubmitted">
+      </app-error>
     </div>
 
     <div class="state-section mb-3">
       <label  class="form-label">
         State <label class="required-symbol">*</label>
       </label>
-      <select formControlName="state" class="form-select">
+      <select
+        [ngClass]="{'required': (isFormSubmitted && taskForm.get('state').invalid) ||
+        (taskForm.get('state').invalid && taskForm.get('state').errors) &&
+        (taskForm.get('state').dirty || taskForm.get('state').touched)}"
+        formControlName="state" class="form-select" >
         <option value="todo">Todo</option>
         <option value="inprogress">Inprogress</option>
         <option value="done">Done</option>
       </select>
+
+      <app-error
+        [taskForm]="taskForm"
+        formField="state"
+        [isFormSubmitted]="isFormSubmitted">
+      </app-error>
     </div>
 
     <button
