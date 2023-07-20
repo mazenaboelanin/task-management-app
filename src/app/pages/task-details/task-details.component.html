@@ -3,39 +3,45 @@
 
 
 <div class="container">
-  <button type="button" class="btn btn-primary" [routerLink]="['']">Back</button>
-  <div class="p-3" style="border: 1px solid #CCCC; width: 50%; margin: auto; border-radius: 10px;">
+
+  <div class="row">
+    <div class="col-6 p-2">
+      <button type="button" class="btn btn-primary" [routerLink]="['']">Back</button>
+    </div>
+  </div>
+
+  <div class="details p-3 mt-3">
     <div class="row">
-      <div class="col-6 offset-3 p-2">
+      <div class="col-6 p-2">
         <label class="fw-bold me-2">Title:</label>
         <label for="title">{{ task?.title }} </label>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-6 offset-3 p-2">
+      <div class="col-6 p-2">
         <label class="fw-bold me-2">Description:</label>
         <p> {{ task?.description }} </p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-6 offset-3 p-2">
+      <div class="col-6 p-2">
         <label class="fw-bold me-2">Priority:</label>
         <label for="priority"> {{ task?.priority }} </label>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-6 offset-3 p-2">
+      <div class="col-6 p-2">
         <label class="fw-bold me-2">State:</label>
         <label for="state"> {{ task?.state }} </label>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-6 offset-3 p-2">
-        <label class="fw-bold me-2">Date::</label>
+      <div class="col-6 p-2">
+        <label class="fw-bold me-2">Date:</label>
         <label for="date"> {{ task?.date }} </label>
       </div>
     </div>
