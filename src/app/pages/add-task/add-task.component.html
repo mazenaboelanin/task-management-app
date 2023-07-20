@@ -6,6 +6,10 @@
 
   <form [formGroup]="taskForm">
 
+      <ngb-alert #successAlert *ngIf="taskCreated" type="success" >
+        Task Created Successfully
+      </ngb-alert>
+
     <div class="title-section mb-3">
       <label class="form-label">
         Title <label class="required-symbol">*</label>

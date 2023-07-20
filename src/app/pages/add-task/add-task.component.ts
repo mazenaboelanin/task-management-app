@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TaskService } from 'src/app/services/task/task.service';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -9,8 +10,11 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
+  @ViewChild('successAlert', { static: false }) successAlert: NgbAlert;
+
   taskForm: FormGroup;
   isFormSubmitted: boolean;
+  taskCreated: boolean;
 
   constructor(
     private taskService: TaskService
@@ -58,7 +62,7 @@ export class AddTaskComponent implements OnInit {
 
     this.taskService.createTask(task).subscribe(
       (response) => {
-        console.log('Created Successfully:', response);
+        this.taskCreated = true;
         this.isFormSubmitted = false;
         this.taskForm.controls['title'].reset();
         this.taskForm.controls['description'].reset();
@@ -66,9 +70,10 @@ export class AddTaskComponent implements OnInit {
         this.taskForm.controls['date'].reset();
       },
       (error) => {
-        console.log('error:', error);
+        console.log('error:', error.message);
       }
     );
+    this.taskCreated = false;
   }
 
   clearFormData(){
@@ -77,4 +82,9 @@ export class AddTaskComponent implements OnInit {
     console.log('form:', this.taskForm.value);
   }
 
+  closeSuccessAlert(){
+    if (this.successAlert) {
+      this.successAlert.close();
+    }
+  }
 }
