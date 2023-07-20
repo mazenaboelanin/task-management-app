@@ -29,6 +29,18 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
+  submitTask(){
+    this.isFormSubmitted = true;
+
+    if(!this.taskForm.valid){
+      return;
+    }
+    const task = {
+      title: this.taskForm?.value.title,
+      description: this.taskForm?.value.description,
+      priority: this.taskForm?.value.priority,
+      state: this.taskForm?.value.state
+    }
   }
 
 }
