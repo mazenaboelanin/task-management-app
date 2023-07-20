@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-6 offset-3">
     <div class="card mb-4"
+      (click)="redirectToTaskDetails()"
       [ngClass]="{
         'todo': task.state === 'todo',
         'inprogress': task.state === 'inprogress',
@@ -12,6 +13,7 @@
           <input
             type="checkbox"
             class="form-check-input"
+            (click)="$event.stopPropagation();"
             [(ngModel)]="task.checked"
             (ngModelChange)="taskSelected($event)">
           <label class="form-check-label" for="flexCheckDefault">
@@ -32,14 +34,14 @@
         <div class="actions mt-2">
           <button
             *ngIf="task?.state !== 'done'"
-            (click)="updateTaskState()"
+            (click)="$event.stopPropagation(); updateTaskState()"
             type="button"
             class="btn btn-sm me-2"
             [ngClass]="{ 'btn-success': task?.state === 'inprogress', 'btn-warning': task?.state === 'todo'}">
             {{ task?.state === 'inprogress' ? 'Done' : 'Inprogress' }} Task
           </button>
           <button
-            (click)="deleteTask()"
+            (click)="$event.stopPropagation(); deleteTask()"
             type="button"
             class="btn btn-danger btn-sm">Delete Task</button>
         </div>

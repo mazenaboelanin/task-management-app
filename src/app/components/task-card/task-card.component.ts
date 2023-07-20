@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
 import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class TaskCardComponent implements OnInit {
   selectedTasks = [];
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -49,5 +51,12 @@ export class TaskCardComponent implements OnInit {
         console.log(error)
       }
     );
+  }
+
+  redirectToTaskDetails(){
+    const navigationExtras: NavigationExtras = {
+      state: { task: this.task },
+    };
+    this.router.navigate(['task-details'], navigationExtras);
   }
 }

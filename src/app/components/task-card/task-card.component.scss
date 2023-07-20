@@ -21,3 +21,11 @@
     font-size: 0.8rem;
   }
 }
+
+.card {
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #D3D3D3;
+}
