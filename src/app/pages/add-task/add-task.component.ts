@@ -35,7 +35,9 @@ export class AddTaskComponent implements OnInit {
     if(!this.taskForm.valid){
       return;
     }
+
     const task = {
+      id: uuidv4(),
       title: this.taskForm?.value.title,
       description: this.taskForm?.value.description,
       priority: this.taskForm?.value.priority,
