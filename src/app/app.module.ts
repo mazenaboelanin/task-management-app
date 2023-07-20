@@ -9,6 +9,7 @@ import { AddTaskComponent } from './pages/add-task/add-task.component';
 import { TaskCardComponent } from './components/task-card/task-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     TasksListComponent,
     TaskDetailsComponent,
     AddTaskComponent,
-    TaskCardComponent
+    TaskCardComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
