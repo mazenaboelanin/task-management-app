@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-details',
@@ -6,8 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-details.component.scss']
 })
 export class TaskDetailsComponent implements OnInit {
-
-  constructor() { }
+  task: any;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParams.subscribe(
+      (params) => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.task = this.router.getCurrentNavigation().extras.state['task'];
+      }
+      }
+    );
+  }
 
   ngOnInit(): void {
   }
